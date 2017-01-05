@@ -7,8 +7,8 @@ The /proc/diskstats file displays the I/O statistics of block devices.
 Each line contains the following 14 fields:
   
 Each set of stats only applies to the indicated device; if you want
-system-wide stats you'll have to find all the devices and sum them all up.
-  
+system-wide stats you'll have to find all the devices and sum them all up. 
+```
    1:   major number
    2:   minor number
    3:   device name
@@ -23,28 +23,29 @@ system-wide stats you'll have to find all the devices and sum them all up.
    12:  I/Os currently in progress
    13:  time spent doing I/Os (ms)
    14:  weighted time spent doing I/Os (ms)
+```
    
 For more details you can refer to the linux kernel Documentation/iostats.txt
    
 Once the information was updated you can access these disk states metrics
    
-``import "github.com/gaurav36/procdiskstats"
-   
+```
+   import "github.com/gaurav36/procdiskstats"
    err := procdiskstats.Update()
-``
+```
  
 for accessing diskstats metrics information you need to call respective function
 with exact disk name as a argument to the function. Disk name can be found in
-   ``cat /proc/diskstats
-   ``
+   ```  
+   cat /proc/diskstats
+   ```
 or by executing
-   `` fdisk -l
-   ``
+   ```  
+   fdisk -l
+   ```
   
 for eg: getting information about I/Os currently in progress of disk sda1
    
-``   
+```  
  ios, err := procdiskstats.IoInProgress ("sda1")
-``
-  
- 
+```
